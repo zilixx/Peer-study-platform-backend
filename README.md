@@ -13,7 +13,27 @@ This is the working repository for group project Peer Study Helping platform.
 - Database user: `root`
 - Database password: `mysql_pwd`
 
-**Create following tables before you launch the backend**
+### Connect MySQL in IntelliJ
+Click `View -> Tool Windows -> Database`, then click the `+` button and add MySQL as datasource.
+
+In the configuration:
+
+**General**
+- `Host`: `localhost`
+- `User`: `root`
+- `Password`: `mysql_pwd`
+- `Database`: `peerhelping`
+- `Port`: `3306`
+
+**Advanced**
+
+Find `serverTimezone`, set the value to `UTC`, then apply.
+
+#### Create table in database
+**Create database before you use the SQL script!**
+SQL script location: `./src/main/resources/static/elec5619_assignment.sql`
+
+Run this script in IntelliJ.
 
 #### Table
 1. courses
@@ -61,18 +81,3 @@ This is the working repository for group project Peer Study Helping platform.
 |courseId|int|Not Null||
 |teach|varchar(45)|Not Null||
 
-### Connect MySQL in IntelliJ
-Click `View -> Database`, then click the `+` button and add MySQL as datasource.
-
-In the configuration:
-
-**General**
-- `Host`: `localhost`
-- `User`: `root`
-- `Password`: `mysql_pwd`
-- `Database`: `peerhelping`
-- `Port`: `3306`
-
-**Advanced**
-
-Find `serverTimezone`, set the value to `UTC`, then apply.
