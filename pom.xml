@@ -54,6 +54,18 @@
             <scope>test</scope>
         </dependency>
 
+        <!--jstl dependency-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
+        <!--jsp compiler-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>9.0.37</version>
+        </dependency>
 
     </dependencies>
 

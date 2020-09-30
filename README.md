@@ -9,8 +9,57 @@ This is the working repository for group project Peer Study Helping platform.
 
 ### MySQL setup
 - Port: `3306`
-- Database: `peerhelping`
-- Table: `users`
+- Database name: `peerhelping`
+- Database user: `root`
+- Database password: `mysql_pwd`
+
+**Create following tables before you launch the backend**
+
+#### Table
+1. courses
+
+|Field name|Type|Null type|key|
+|----|----|----|----|
+|courseId|int|Not Null|yes|
+|description|varchar(45)|Not Null||
+|name|varchar(45)|Not Null||
+|courseCode|varchar(45)|Not Null||
+
+2. users
+
+|Field name|Type|Null type|key|
+|----|----|----|----|
+|sid|int|Not Null|yes|
+|first_name|varchar(45)|Not Null||
+|last_name|varchar(45)|Not Null||
+|gender|varchar(45)|||
+|password|varchar(45)|Not Null||
+
+3. matches
+
+|Field name|Type|Null type|key|
+|----|----|----|----|
+|matchId|int|Not Null|yes|
+|studentSid|int)|Not Null||
+|tutorSid|int|Not Null||
+|courseId|int|Not Null||
+|matchTime|varchar(45)|Not Null||
+
+4. calendar
+
+|Field name|Type|Null type|key|
+|----|----|----|----|
+|sid|int|Not Null||
+|availableTimeStarts|varchar(45)|Not Null||
+|availableTimeDuration|varchar(45)|Not Null||
+
+5. intrestedIn
+
+|Field name|Type|Null type|key|
+|----|----|----|----|
+|sid|int|Not Null||
+|courseId|int|Not Null||
+|teach|varchar(45)|Not Null||
 
 ### Connect MySQL in IntelliJ
 Click `View -> Database`, then click the `+` button and add MySQL as datasource.
