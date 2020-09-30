@@ -6,8 +6,6 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/peerhelping</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <property name="connection.username">root</property>
-    <property name="connection.password">mysql_pwd</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
 
@@ -15,5 +13,9 @@
      <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping resource="UsersEntityhbm.xml"/>
     <mapping class="org.elec5619.peerhelping.domain.UsersEntity"/>
+      <mapping class="org.elec5619.peerhelping.domain.CalendarEntity"/>
+      <mapping class="org.elec5619.peerhelping.domain.CoursesEntity"/>
+    <mapping class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
+    <mapping class="org.elec5619.peerhelping.domain.MatchesEntity"/>
   </session-factory>
 </hibernate-configuration>

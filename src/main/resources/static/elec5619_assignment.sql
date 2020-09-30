@@ -37,8 +37,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `peerhelping`.`calendar` (
   `sid` INT NOT NULL,
-  `avaliableTimeStarts` VARCHAR(45) NOT NULL,
-  `avaliableTimeDuration` VARCHAR(45) NOT NULL,
+  `availableTimeStarts` VARCHAR(45) NOT NULL,
+  `availableTimeDuration` VARCHAR(45) NOT NULL,
   INDEX `fk_calendar_users1_idx` (`sid` ASC) VISIBLE,
   CONSTRAINT `fk_calendar_users`
     FOREIGN KEY (`sid`)
@@ -83,7 +83,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `peerhelping`.`matchs`
+-- Table `peerhelping`.`matches`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `peerhelping`.`matches` (
   `matchID` INT NOT NULL,
@@ -92,16 +92,16 @@ CREATE TABLE IF NOT EXISTS `peerhelping`.`matches` (
   `courseId` INT NOT NULL,
   `matchTime` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matchID`),
-  INDEX `fk_matchs_users_idx` (`studentSid` ASC) VISIBLE,
-  INDEX `fk_matchs_users1_idx` (`tutorSid` ASC) VISIBLE,
-  INDEX `fk_matchs_courses1_idx` (`courseId` ASC) VISIBLE,
-  CONSTRAINT `fk_matchs_courses`
+  INDEX `fk_matches_users_idx` (`studentSid` ASC) VISIBLE,
+  INDEX `fk_matches_users1_idx` (`tutorSid` ASC) VISIBLE,
+  INDEX `fk_matches_courses1_idx` (`courseId` ASC) VISIBLE,
+  CONSTRAINT `fk_matches_courses`
     FOREIGN KEY (`courseId`)
     REFERENCES `peerhelping`.`courses` (`courseId`),
-  CONSTRAINT `fk_matchs_students`
+  CONSTRAINT `fk_matches_students`
     FOREIGN KEY (`studentSid`)
     REFERENCES `peerhelping`.`users` (`sid`),
-  CONSTRAINT `fk_matchs_tutors`
+  CONSTRAINT `fk_matches_tutors`
     FOREIGN KEY (`tutorSid`)
     REFERENCES `peerhelping`.`users` (`sid`))
 ENGINE = InnoDB
