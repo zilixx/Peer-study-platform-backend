@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.elec5619.peerhelping.domain.MatchesEntity" table="matches" schema="peerhelping">
+        <id name="matchId">
+            <column name="matchID" sql-type="int"/>
+        </id>
+        <property name="matchTime">
+            <column name="matchTime" sql-type="varchar(45)" length="45"/>
+        </property>
+    </class>
+</hibernate-mapping>

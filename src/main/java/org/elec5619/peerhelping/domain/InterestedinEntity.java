@@ -1,24 +1,24 @@
 package org.elec5619.peerhelping.domain;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
 @Table(name = "interestedin", schema = "peerhelping", catalog = "")
 public class InterestedinEntity {
-    private String teach;
+    private int interestId;
 
-    @Basic
-    @Column(name = "teach", nullable = false, length = 45)
-    public String getTeach() {
-        return teach;
+    @Id
+    @Column(name = "interestId", nullable = false)
+    public int getInterestId() {
+        return interestId;
     }
 
-    public void setTeach(String teach) {
-        this.teach = teach;
+    public void setInterestId(int interestId) {
+        this.interestId = interestId;
     }
 
     @Override
@@ -26,11 +26,11 @@ public class InterestedinEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InterestedinEntity that = (InterestedinEntity) o;
-        return Objects.equals(teach, that.teach);
+        return interestId == that.interestId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(teach);
+        return Objects.hash(interestId);
     }
 }

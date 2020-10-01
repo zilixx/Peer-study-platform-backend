@@ -1,21 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/peerhelping</property>
-    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <property name="show_sql">true</property>
-    <property name="format_sql">true</property>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/peerhelping</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
 
-    <!-- DB schema will be updated if needed -->
-     <property name="hibernate.hbm2ddl.auto">update</property>
-    <mapping resource="UsersEntityhbm.xml"/>
-    <mapping class="org.elec5619.peerhelping.domain.UsersEntity"/>
-      <mapping class="org.elec5619.peerhelping.domain.CalendarEntity"/>
-      <mapping class="org.elec5619.peerhelping.domain.CoursesEntity"/>
-    <mapping class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
-    <mapping class="org.elec5619.peerhelping.domain.MatchesEntity"/>
-  </session-factory>
+        <!-- DB schema will be updated if needed -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping resource="CalendarEntityhbm.xml"/>
+        <mapping class="org.elec5619.peerhelping.domain.CalendarEntity"/>
+        <mapping resource="CoursesEntityhbm.xml"/>
+        <mapping class="org.elec5619.peerhelping.domain.CoursesEntity"/>
+        <mapping resource="InterestedinEntityhbm.xml"/>
+        <mapping class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
+        <mapping resource="MatchesEntityhbm.xml"/>
+        <mapping class="org.elec5619.peerhelping.domain.MatchesEntity"/>
+        <mapping class="org.elec5619.peerhelping.domain.UsersEntity"/>
+        <mapping resource="UsersEntityhbm.xml"/>
+    </session-factory>
 </hibernate-configuration>
