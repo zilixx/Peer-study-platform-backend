@@ -35,7 +35,7 @@
                         <h5>Please sign in first</h5>
                     </span>
             </div>
-            <span id="error" style="color: red">${errMessage}</span>
+            <span style="color: red">${errMessage}</span>
             <div class="row">
                 <div class="input-field col s12">
                     <input id="sid" name="sid" type="text" class="validate" required />

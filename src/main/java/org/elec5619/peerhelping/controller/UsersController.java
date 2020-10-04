@@ -44,7 +44,7 @@ public class UsersController {
             session.setAttribute("errMessage", "user does not exist");
             // set session time
             session.setMaxInactiveInterval(5);
-            return new ModelAndView("login");
+            return new ModelAndView(new RedirectView("/"));
         }
     }
 
