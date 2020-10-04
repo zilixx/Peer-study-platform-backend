@@ -14,4 +14,7 @@ public class UsersService{
         return usersDao.findBySidAndPassword(sid, pwd);
     }
 
+    public UsersEntity findBySid(int sid) { return usersDao.findBySid(sid); }
+
+    public void save(UsersEntity usersEntity) { usersDao.save(usersEntity); }
 }
