@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "calendar", schema = "peerhelping", catalog = "")
+@Table(name = "calendar", schema = "peerhelping")
 public class CalendarEntity {
     private int calendarId;
     private String availableTimeStarts;

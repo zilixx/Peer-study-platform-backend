@@ -7,4 +7,5 @@ public interface CoursesDao extends CrudRepository<CoursesEntity, Long> {
     CoursesEntity findByCourseId(int courseId);
 
     // TODO: to be updated
+
 }
