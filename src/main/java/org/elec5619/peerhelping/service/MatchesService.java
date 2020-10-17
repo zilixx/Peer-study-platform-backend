@@ -6,18 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MatchesService {
     @Autowired
     MatchesDao matchesDao;
 
-    public MatchesEntity findByMatchId(int matchId){
-        return this.matchesDao.findByMatchId(matchId);
+    public List<Map<String, Object>> findAllBookings(int sid) {
+        return this.matchesDao.findByStudentId(sid);
     }
 
-    // TODO: to be updated
-    public List<Object> findAllBookings() {
-        return this.matchesDao.findByStudentId();
+    public void deleteByMatchId(int matchId) {
+        this.matchesDao.deleteByMatchId(matchId);
+    }
+
+    public MatchesEntity findByMatchId(int matchId){
+        return this.matchesDao.findByMatchId(matchId);
     }
 }

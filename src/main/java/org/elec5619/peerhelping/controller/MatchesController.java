@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class MatchesController {
@@ -18,10 +19,16 @@ public class MatchesController {
         return this.matchesService.findByMatchId(bookingId);
     }
 
-    // TODO: to be updated
-    @GetMapping("/booking/all")
+    @GetMapping("/booking")
     @ResponseBody
-    public List<Object> findAllBooking() {
-        return this.matchesService.findAllBookings();
+    public List<Map<String, Object>> findAllBooking(@RequestParam(value = "sid") String sid) {
+        return this.matchesService.findAllBookings(Integer.parseInt(sid));
+    }
+
+    @GetMapping("/booking/delete")
+    @ResponseBody
+    public void deleteBooking(@RequestParam(value = "bookingId") String matchId){
+        this.matchesService.deleteByMatchId(Integer.parseInt(matchId));
+        // TODO: no response for this request
     }
 }
