@@ -5,16 +5,23 @@ import org.elec5619.peerhelping.domain.MatchesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class MatchesService {
     @Autowired
     MatchesDao matchesDao;
 
+    public List<Map<String, Object>> findAllBookings(int sid) {
+        return this.matchesDao.findByStudentId(sid);
+    }
+
+    public void deleteByMatchId(int matchId) {
+        this.matchesDao.deleteByMatchId(matchId);
+    }
+
     public MatchesEntity findByMatchId(int matchId){
         return this.matchesDao.findByMatchId(matchId);
     }
-
-    // TODO: to be updated
-    //TODO: Error creating bean with name 'matchesDao' defined in org.elec5619.peerhelping.dao.MatchesDao defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaMappingContext' while setting bean
-    // TODO: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: org.elec5619.peerhelping.domain.CalendarEntity
 }

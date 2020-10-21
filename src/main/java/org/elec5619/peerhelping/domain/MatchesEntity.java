@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "matches", schema = "peerhelping", catalog = "")
+@Table(name = "matches", schema = "peerhelping")
 public class MatchesEntity {
     private int matchId;
     private String matchTime;
