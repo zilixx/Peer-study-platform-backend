@@ -1,6 +1,10 @@
 # Peer_Study_Helping_Backend
 This is the working repository for group project Peer Study Helping platform.
 
+The `master` branch is for completed code merged from other feature branch. Do not push directly into `master`.
+
+One branch for each group member with their unique tasks.
+
 **This is the backend project repository, if you are looking for the front project, checkout https://github.sydney.edu.au/ELEC5619-2020/Peer_Study_Helping_Frontend**
 ## Project setup
 ### Dependencies that need to be installed manually
@@ -29,7 +33,7 @@ In the configuration:
 
 Find `serverTimezone`, set the value to `UTC`, then apply.
 
-#### Create table in database
+### Create table in database
 **Create database before you use the SQL script!**
 SQL script location: `./src/main/resources/static/elec5619_assignment.sql`
 
@@ -69,9 +73,9 @@ Run this script in IntelliJ.
 
 |Field name|Type|Null type|key|
 |----|----|----|----|
+|calendarId|int|Not Null|yes|
 |sid|int|Not Null||
-|availableTimeStarts|varchar(45)|Not Null||
-|availableTimeDuration|varchar(45)|Not Null||
+|availableTime|varchar(45)|Not Null||
 
 5. intrestedIn
 
@@ -79,5 +83,11 @@ Run this script in IntelliJ.
 |----|----|----|----|
 |sid|int|Not Null||
 |courseId|int|Not Null||
-|teach|varchar(45)|Not Null||
+|interestId|int)|Not Null|yes|
 
+
+### Run the project
+**Start your MySQL server before launch the Spring application!**
+
+In your IntelliJ IDEA：
+Click `Run` -> `Run 'PeerhelpingApplication'`, the Tomcat server will run on `localhost:8888` 
