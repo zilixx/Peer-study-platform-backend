@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: john19970623
   Date: 2020/9/20
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="css/login.css">
-    <title>Welcome to momoland</title>
+    <title>Login & Signup</title>
 </head>
 <body>
 <!-- login & signup page -->
@@ -32,7 +32,7 @@
         <form id="loginForm" action="/doLogin" method="post">
             <div class="section">
                     <span class="teal-text">
-                        <h5>Log in with your account!</h5>
+                        <h5>Please sign in first</h5>
                     </span>
             </div>
             <span style="color: red">${errMessage}</span>
@@ -56,10 +56,6 @@
                         <span class="teal-text">Remember me?</span>
                     </label>
                 </div>
-<%--                <div class="col s6">--%>
-<%--                    <a href="#resetModal" class="modal-trigger">--%>
-<%--                        <span class="teal-text">Reset password?</span></a>--%>
-<%--                </div>--%>
             </div>
             <div class="row">
                 <div class="col s6">
@@ -117,7 +113,6 @@
         </form>
     </div>
 </div>
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
