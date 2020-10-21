@@ -7,8 +7,7 @@ import java.util.Objects;
 @Table(name = "calendar", schema = "peerhelping")
 public class CalendarEntity {
     private int calendarId;
-    private String availableTimeStarts;
-    private String availableTimeDuration;
+    private String availableTime;
 
     @Id
     @Column(name = "calendarId", nullable = false)
@@ -21,23 +20,13 @@ public class CalendarEntity {
     }
 
     @Basic
-    @Column(name = "availableTimeStarts", nullable = false, length = 45)
-    public String getAvailableTimeStarts() {
-        return availableTimeStarts;
+    @Column(name = "availableTime", nullable = false, length = 45)
+    public String getAvailableTime() {
+        return availableTime;
     }
 
-    public void setAvailableTimeStarts(String availableTimeStarts) {
-        this.availableTimeStarts = availableTimeStarts;
-    }
-
-    @Basic
-    @Column(name = "availableTimeDuration", nullable = false, length = 45)
-    public String getAvailableTimeDuration() {
-        return availableTimeDuration;
-    }
-
-    public void setAvailableTimeDuration(String availableTimeDuration) {
-        this.availableTimeDuration = availableTimeDuration;
+    public void setAvailableTime(String availableTime) {
+        this.availableTime = availableTime;
     }
 
     @Override
@@ -46,12 +35,11 @@ public class CalendarEntity {
         if (o == null || getClass() != o.getClass()) return false;
         CalendarEntity that = (CalendarEntity) o;
         return calendarId == that.calendarId &&
-                Objects.equals(availableTimeStarts, that.availableTimeStarts) &&
-                Objects.equals(availableTimeDuration, that.availableTimeDuration);
+                Objects.equals(availableTime, that.availableTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(calendarId, availableTimeStarts, availableTimeDuration);
+        return Objects.hash(calendarId, availableTime);
     }
 }

@@ -23,7 +23,7 @@ public interface MatchesDao extends CrudRepository<MatchesEntity, Long> {
      * @param sid Student SID
      * @return JSON List object
      * */
-    @Query(value = "select m.matchID, u.first_name, u.last_name, m.matchTime, c.courseCode " +
+    @Query(value = "select m.matchId, u.first_name, u.last_name, m.matchTime, c.courseCode " +
             "from users u, matches m, courses c " +
             "where m.studentSid=:sid and m.tutorSid = u.sid and m.courseId = c.courseId", nativeQuery = true)
     List<Map<String, Object>> findByStudentId(@Param(value = "sid") int sid);

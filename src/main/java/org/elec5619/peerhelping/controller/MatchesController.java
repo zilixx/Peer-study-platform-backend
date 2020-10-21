@@ -9,26 +9,33 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/booking")
 public class MatchesController {
     @Autowired
     MatchesService matchesService;
 
-    @GetMapping("/booking/{bookingId}")
+    @GetMapping("/{bookingId}")
     @ResponseBody
     public MatchesEntity findBooking(@PathVariable int bookingId){
         return this.matchesService.findByMatchId(bookingId);
     }
 
-    @GetMapping("/booking")
+    @GetMapping("/all")
     @ResponseBody
     public List<Map<String, Object>> findAllBooking(@RequestParam(value = "sid") String sid) {
         return this.matchesService.findAllBookings(Integer.parseInt(sid));
     }
 
-    @GetMapping("/booking/delete")
+    @GetMapping("/delete")
     @ResponseBody
-    public void deleteBooking(@RequestParam(value = "bookingId") String matchId){
+    public String deleteBooking(@RequestParam(value = "bookingId") String matchId){
         this.matchesService.deleteByMatchId(Integer.parseInt(matchId));
-        // TODO: no response for this request
+
+        var searchRes = this.matchesService.findByMatchId(Integer.parseInt(matchId));
+        if (searchRes == null) {
+            return "{\"deleteStat\": true}";
+        } else {
+            return "{\"deleteStat\": false}";
+        }
     }
 }
