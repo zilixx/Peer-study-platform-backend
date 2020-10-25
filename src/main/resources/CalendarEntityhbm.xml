@@ -5,14 +5,11 @@
 <hibernate-mapping>
 
     <class name="org.elec5619.peerhelping.domain.CalendarEntity" table="calendar" schema="peerhelping">
-        <id name="calendarId">
-            <column name="calendarId" sql-type="int"/>
-        </id>
-        <property name="availableTimeStarts">
-            <column name="availableTimeStarts" sql-type="varchar(45)" length="45"/>
-        </property>
-        <property name="availableTimeDuration">
-            <column name="availableTimeDuration" sql-type="varchar(45)" length="45"/>
-        </property>
+        <id name="calendarId" column="calendarId"/>
+        <property name="sid" column="sid"/>
+        <property name="availableTime" column="availableTime"/>
+        <many-to-one name="usersBySid" class="org.elec5619.peerhelping.domain.UsersEntity">
+            <column name="sid"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

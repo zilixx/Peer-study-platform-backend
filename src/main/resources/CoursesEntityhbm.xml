@@ -5,17 +5,21 @@
 <hibernate-mapping>
 
     <class name="org.elec5619.peerhelping.domain.CoursesEntity" table="courses" schema="peerhelping">
-        <id name="courseId">
-            <column name="courseId" sql-type="int"/>
-        </id>
-        <property name="description">
-            <column name="description" sql-type="varchar(45)" length="45"/>
-        </property>
-        <property name="name">
-            <column name="name" sql-type="varchar(45)" length="45"/>
-        </property>
-        <property name="courseCode">
-            <column name="courseCode" sql-type="varchar(45)" length="45"/>
-        </property>
+        <id name="courseId" column="courseId"/>
+        <property name="name" column="name"/>
+        <property name="description" column="description"/>
+        <property name="courseCode" column="courseCode"/>
+        <set name="interestedinsByCourseId" inverse="true">
+            <key>
+                <column name="courseId"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
+        </set>
+        <set name="matchesByCourseId" inverse="true">
+            <key>
+                <column name="courseId"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.MatchesEntity"/>
+        </set>
     </class>
 </hibernate-mapping>

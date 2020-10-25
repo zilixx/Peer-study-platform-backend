@@ -11,15 +11,16 @@
 
         <!-- DB schema will be updated if needed -->
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping resource="CalendarEntityhbm.xml"/>
         <mapping class="org.elec5619.peerhelping.domain.CalendarEntity"/>
-        <mapping resource="CoursesEntityhbm.xml"/>
+        <mapping resource="CalendarEntityhbm.xml"/>
         <mapping class="org.elec5619.peerhelping.domain.CoursesEntity"/>
-        <mapping resource="InterestedinEntityhbm.xml"/>
+        <mapping resource="CoursesEntityhbm.xml"/>
         <mapping class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
-        <mapping resource="MatchesEntityhbm.xml"/>
+        <mapping resource="InterestedinEntityhbm.xml"/>
         <mapping class="org.elec5619.peerhelping.domain.MatchesEntity"/>
+        <mapping resource="MatchesEntityhbm.xml"/>
         <mapping class="org.elec5619.peerhelping.domain.UsersEntity"/>
         <mapping resource="UsersEntityhbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>

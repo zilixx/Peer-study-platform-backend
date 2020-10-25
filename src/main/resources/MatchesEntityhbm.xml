@@ -5,11 +5,19 @@
 <hibernate-mapping>
 
     <class name="org.elec5619.peerhelping.domain.MatchesEntity" table="matches" schema="peerhelping">
-        <id name="matchId">
-            <column name="matchID" sql-type="int"/>
-        </id>
-        <property name="matchTime">
-            <column name="matchTime" sql-type="varchar(45)" length="45"/>
-        </property>
+        <id name="matchId" column="matchId"/>
+        <property name="studentSid" column="studentSid"/>
+        <property name="tutorSid" column="tutorSid"/>
+        <property name="courseId" column="courseId"/>
+        <property name="matchTime" column="matchTime"/>
+        <many-to-one name="usersByStudentSid" class="org.elec5619.peerhelping.domain.UsersEntity">
+            <column name="studentSid"/>
+        </many-to-one>
+        <many-to-one name="usersByTutorSid" class="org.elec5619.peerhelping.domain.UsersEntity">
+            <column name="tutorSid"/>
+        </many-to-one>
+        <many-to-one name="coursesByCourseId" class="org.elec5619.peerhelping.domain.CoursesEntity">
+            <column name="courseId"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

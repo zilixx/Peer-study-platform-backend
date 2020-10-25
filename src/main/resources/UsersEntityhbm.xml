@@ -5,20 +5,34 @@
 <hibernate-mapping>
 
     <class name="org.elec5619.peerhelping.domain.UsersEntity" table="users" schema="peerhelping">
-        <id name="sid">
-            <column name="sid" sql-type="int"/>
-        </id>
-        <property name="firstName">
-            <column name="first_name" sql-type="varchar(45)" length="45"/>
-        </property>
-        <property name="lastName">
-            <column name="last_name" sql-type="varchar(45)" length="45"/>
-        </property>
-        <property name="gender">
-            <column name="gender" sql-type="varchar(45)" length="45" not-null="true"/>
-        </property>
-        <property name="password">
-            <column name="password" sql-type="varchar(45)" length="45"/>
-        </property>
+        <id name="sid" column="sid"/>
+        <property name="firstName" column="first_name"/>
+        <property name="lastName" column="last_name"/>
+        <property name="password" column="password"/>
+        <property name="gender" column="gender"/>
+        <set name="calendarsBySid" inverse="true">
+            <key>
+                <column name="sid"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.CalendarEntity"/>
+        </set>
+        <set name="interestedinsBySid" inverse="true">
+            <key>
+                <column name="sid"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
+        </set>
+        <set name="matchesBySid" inverse="true">
+            <key>
+                <column name="studentSid"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.MatchesEntity"/>
+        </set>
+        <set name="matchesBySid_0" inverse="true">
+            <key>
+                <column name="tutorSid"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.MatchesEntity"/>
+        </set>
     </class>
 </hibernate-mapping>

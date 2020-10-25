@@ -5,8 +5,14 @@
 <hibernate-mapping>
 
     <class name="org.elec5619.peerhelping.domain.InterestedinEntity" table="interestedin" schema="peerhelping">
-        <id name="interestId">
-            <column name="interestId" sql-type="int"/>
-        </id>
+        <id name="interestId" column="interestId"/>
+        <property name="sid" column="sid"/>
+        <property name="courseId" column="courseId"/>
+        <many-to-one name="usersBySid" class="org.elec5619.peerhelping.domain.UsersEntity">
+            <column name="sid"/>
+        </many-to-one>
+        <many-to-one name="coursesByCourseId" class="org.elec5619.peerhelping.domain.CoursesEntity">
+            <column name="courseId"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>
