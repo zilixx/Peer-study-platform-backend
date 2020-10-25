@@ -8,6 +8,7 @@ class PeerhelpingApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("test");
     }
 
 }

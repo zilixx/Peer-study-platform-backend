@@ -14,10 +14,6 @@ public class CoursesService {
     @Autowired
     CoursesDao coursesDao;
 
-    public CoursesEntity findByCourseId(int courseId) {
-        return coursesDao.findByCourseId(courseId);
-    }
-
     public List<CoursesEntity> readDistinctCourses() {
         return coursesDao.getAllDistinctCourses();
     }

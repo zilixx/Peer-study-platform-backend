@@ -8,8 +8,13 @@ public interface InterestedInDao extends CrudRepository<InterestedinEntity, Long
     @Query(value = "SELECT * FROM interestedin WHERE courseId=?1", nativeQuery = true)
     InterestedinEntity findByCourseId(int courseId);
 
-    @Query(value = "SELECT * FROM interestedin WHERE sid=?1", nativeQuery = true)
-    InterestedinEntity findBySid(int sid);
+    /**
+     * Find the tutor's courseId by its sid.
+     * @param sid tutor sid
+     * @return an InterestedinEntity object
+     */
+    @Query(value = "SELECT courseId FROM interestedin WHERE sid=?1", nativeQuery = true)
+    InterestedinEntity findCourseIdByTutorSid(int sid);
 
     // TODO: to be updated
 }

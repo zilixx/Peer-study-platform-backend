@@ -9,7 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 public interface CoursesDao extends CrudRepository<CoursesEntity, Long> {
-    CoursesEntity findByCourseId(int courseId);
+    /**
+     * Get the courseId for input courseCode
+     * @param courseCode courseCode in String
+     * @return a CoursesEntity object
+     */
+    CoursesEntity getCoursesEntityByCourseCode(String courseCode);
 
     /**
      * Get all distinct courses

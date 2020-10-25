@@ -15,18 +15,33 @@ public class CoursesController {
     @Autowired
     CoursesService coursesService;
 
+    /**
+     * Get available tutor list for the target course
+     * @param courseCode the target courseCode
+     * @return JSON list
+     */
     @GetMapping("/{courseCode}")
     @ResponseBody
     public List<Map<String, Object>> findCourse(@PathVariable("courseCode") String courseCode){
         return this.coursesService.getTutorInfoByCourseCode(courseCode);
     }
 
+    /**
+     * Get all available courses
+     * @return JSON list
+     */
     @GetMapping("/all")
     @ResponseBody
     public List<CoursesEntity> getAllCourses() {
         return this.coursesService.readDistinctCourses();
     }
 
+    /**
+     * Get all booked tutor list for current student and course
+     * @param courseCode current course
+     * @param sid current login student
+     * @return JSON list
+     */
     @GetMapping("/booked/{courseCode}")
     @ResponseBody
     public List<Map<String, Object>> getBookedTutorList(@PathVariable("courseCode") String courseCode, @RequestParam("sid") String sid) {

@@ -35,4 +35,29 @@ public interface MatchesDao extends CrudRepository<MatchesEntity, Long> {
     @Modifying
     @Transactional
     void deleteByMatchId(int matchId);
+
+    /**
+     * Insert a new booking record into the database
+     * @param matchId new matchId
+     * @param studentSid current login student sid
+     * @param tutorSid the tutor sid that current user selects
+     * @param courseId the courseId
+     * @param matchTime the reserved time in String
+     */
+    @Modifying
+    @Transactional
+    @Query(value = "insert into matches (matchId, studentSid, tutorSid, courseId, matchTime) " +
+            "value (:matchId, :studentId, :tutorId, :courseId, :matchTime)", nativeQuery = true)
+    void addNewBooking(@Param("matchId") int matchId,
+                       @Param("studentId") int studentSid,
+                       @Param("tutorId") int tutorSid,
+                       @Param("courseId") int courseId,
+                       @Param("matchTime") String matchTime);
+
+    /**
+     * Find and return the largest mathId in current database
+     * @return the largest matchId in Integer
+     */
+    @Query(value = "select matchId from matches order by matchId desc limit 1", nativeQuery = true)
+    int findTopMatchId();
 }
