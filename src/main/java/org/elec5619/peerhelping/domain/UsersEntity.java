@@ -1,7 +1,6 @@
 package org.elec5619.peerhelping.domain;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -12,10 +11,6 @@ public class UsersEntity {
     private String lastName;
     private String password;
     private String gender;
-    private Collection<CalendarEntity> calendarsBySid;
-    private Collection<InterestedinEntity> interestedinsBySid;
-    private Collection<MatchesEntity> matchesBySid;
-    private Collection<MatchesEntity> matchesBySid_0;
 
     @Id
     @Column(name = "sid")
@@ -82,41 +77,5 @@ public class UsersEntity {
     @Override
     public int hashCode() {
         return Objects.hash(sid, firstName, lastName, password, gender);
-    }
-
-    @OneToMany(mappedBy = "usersBySid")
-    public Collection<CalendarEntity> getCalendarsBySid() {
-        return calendarsBySid;
-    }
-
-    public void setCalendarsBySid(Collection<CalendarEntity> calendarsBySid) {
-        this.calendarsBySid = calendarsBySid;
-    }
-
-    @OneToMany(mappedBy = "usersBySid")
-    public Collection<InterestedinEntity> getInterestedinsBySid() {
-        return interestedinsBySid;
-    }
-
-    public void setInterestedinsBySid(Collection<InterestedinEntity> interestedinsBySid) {
-        this.interestedinsBySid = interestedinsBySid;
-    }
-
-    @OneToMany(mappedBy = "usersByStudentSid")
-    public Collection<MatchesEntity> getMatchesBySid() {
-        return matchesBySid;
-    }
-
-    public void setMatchesBySid(Collection<MatchesEntity> matchesBySid) {
-        this.matchesBySid = matchesBySid;
-    }
-
-    @OneToMany(mappedBy = "usersByTutorSid")
-    public Collection<MatchesEntity> getMatchesBySid_0() {
-        return matchesBySid_0;
-    }
-
-    public void setMatchesBySid_0(Collection<MatchesEntity> matchesBySid_0) {
-        this.matchesBySid_0 = matchesBySid_0;
     }
 }

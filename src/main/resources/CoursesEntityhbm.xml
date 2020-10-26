@@ -9,17 +9,5 @@
         <property name="name" column="name"/>
         <property name="description" column="description"/>
         <property name="courseCode" column="courseCode"/>
-        <set name="interestedinsByCourseId" inverse="true">
-            <key>
-                <column name="courseId"/>
-            </key>
-            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
-        </set>
-        <set name="matchesByCourseId" inverse="true">
-            <key>
-                <column name="courseId"/>
-            </key>
-            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.MatchesEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

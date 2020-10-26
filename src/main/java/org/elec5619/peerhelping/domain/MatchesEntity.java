@@ -11,9 +11,6 @@ public class MatchesEntity {
     private int tutorSid;
     private int courseId;
     private String matchTime;
-    private UsersEntity usersByStudentSid;
-    private UsersEntity usersByTutorSid;
-    private CoursesEntity coursesByCourseId;
 
     @Id
     @Column(name = "matchId")
@@ -80,35 +77,5 @@ public class MatchesEntity {
     @Override
     public int hashCode() {
         return Objects.hash(matchId, studentSid, tutorSid, courseId, matchTime);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "studentSid", referencedColumnName = "sid", nullable = false)
-    public UsersEntity getUsersByStudentSid() {
-        return usersByStudentSid;
-    }
-
-    public void setUsersByStudentSid(UsersEntity usersByStudentSid) {
-        this.usersByStudentSid = usersByStudentSid;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "tutorSid", referencedColumnName = "sid", nullable = false)
-    public UsersEntity getUsersByTutorSid() {
-        return usersByTutorSid;
-    }
-
-    public void setUsersByTutorSid(UsersEntity usersByTutorSid) {
-        this.usersByTutorSid = usersByTutorSid;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "courseId", referencedColumnName = "courseId", nullable = false)
-    public CoursesEntity getCoursesByCourseId() {
-        return coursesByCourseId;
-    }
-
-    public void setCoursesByCourseId(CoursesEntity coursesByCourseId) {
-        this.coursesByCourseId = coursesByCourseId;
     }
 }

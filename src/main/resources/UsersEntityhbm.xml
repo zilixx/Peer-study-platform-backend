@@ -10,29 +10,5 @@
         <property name="lastName" column="last_name"/>
         <property name="password" column="password"/>
         <property name="gender" column="gender"/>
-        <set name="calendarsBySid" inverse="true">
-            <key>
-                <column name="sid"/>
-            </key>
-            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.CalendarEntity"/>
-        </set>
-        <set name="interestedinsBySid" inverse="true">
-            <key>
-                <column name="sid"/>
-            </key>
-            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.InterestedinEntity"/>
-        </set>
-        <set name="matchesBySid" inverse="true">
-            <key>
-                <column name="studentSid"/>
-            </key>
-            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.MatchesEntity"/>
-        </set>
-        <set name="matchesBySid_0" inverse="true">
-            <key>
-                <column name="tutorSid"/>
-            </key>
-            <one-to-many not-found="ignore" class="org.elec5619.peerhelping.domain.MatchesEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

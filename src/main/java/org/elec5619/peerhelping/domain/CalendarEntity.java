@@ -9,7 +9,6 @@ public class CalendarEntity {
     private int sid;
     private int calendarId;
     private String availableTime;
-    private UsersEntity usersBySid;
 
     @Basic
     @Column(name = "sid")
@@ -54,15 +53,5 @@ public class CalendarEntity {
     @Override
     public int hashCode() {
         return Objects.hash(sid, calendarId, availableTime);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "sid", referencedColumnName = "sid", nullable = false)
-    public UsersEntity getUsersBySid() {
-        return usersBySid;
-    }
-
-    public void setUsersBySid(UsersEntity usersBySid) {
-        this.usersBySid = usersBySid;
     }
 }

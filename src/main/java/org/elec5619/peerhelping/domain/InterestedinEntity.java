@@ -9,8 +9,6 @@ public class InterestedinEntity {
     private int sid;
     private int interestId;
     private int courseId;
-    private UsersEntity usersBySid;
-    private CoursesEntity coursesByCourseId;
 
     @Basic
     @Column(name = "sid")
@@ -55,25 +53,5 @@ public class InterestedinEntity {
     @Override
     public int hashCode() {
         return Objects.hash(sid, interestId, courseId);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "sid", referencedColumnName = "sid", nullable = false)
-    public UsersEntity getUsersBySid() {
-        return usersBySid;
-    }
-
-    public void setUsersBySid(UsersEntity usersBySid) {
-        this.usersBySid = usersBySid;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "courseId", referencedColumnName = "courseId", nullable = false)
-    public CoursesEntity getCoursesByCourseId() {
-        return coursesByCourseId;
-    }
-
-    public void setCoursesByCourseId(CoursesEntity coursesByCourseId) {
-        this.coursesByCourseId = coursesByCourseId;
     }
 }

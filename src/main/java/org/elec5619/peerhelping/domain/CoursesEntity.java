@@ -1,7 +1,6 @@
 package org.elec5619.peerhelping.domain;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +10,6 @@ public class CoursesEntity {
     private String name;
     private String description;
     private String courseCode;
-    private Collection<InterestedinEntity> interestedinsByCourseId;
-    private Collection<MatchesEntity> matchesByCourseId;
 
     @Id
     @Column(name = "courseId")
@@ -68,23 +65,5 @@ public class CoursesEntity {
     @Override
     public int hashCode() {
         return Objects.hash(courseId, name, description, courseCode);
-    }
-
-    @OneToMany(mappedBy = "coursesByCourseId")
-    public Collection<InterestedinEntity> getInterestedinsByCourseId() {
-        return interestedinsByCourseId;
-    }
-
-    public void setInterestedinsByCourseId(Collection<InterestedinEntity> interestedinsByCourseId) {
-        this.interestedinsByCourseId = interestedinsByCourseId;
-    }
-
-    @OneToMany(mappedBy = "coursesByCourseId")
-    public Collection<MatchesEntity> getMatchesByCourseId() {
-        return matchesByCourseId;
-    }
-
-    public void setMatchesByCourseId(Collection<MatchesEntity> matchesByCourseId) {
-        this.matchesByCourseId = matchesByCourseId;
     }
 }

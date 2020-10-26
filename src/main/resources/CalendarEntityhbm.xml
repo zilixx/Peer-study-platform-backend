@@ -8,8 +8,5 @@
         <id name="calendarId" column="calendarId"/>
         <property name="sid" column="sid"/>
         <property name="availableTime" column="availableTime"/>
-        <many-to-one name="usersBySid" class="org.elec5619.peerhelping.domain.UsersEntity">
-            <column name="sid"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>
