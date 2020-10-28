@@ -38,8 +38,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `peerhelping`.`calendar` (
   `sid` INT NOT NULL,
   `calendarId` INT NOT NULL ,
-  `availableTimeStarts` VARCHAR(45) NOT NULL,
-  `availableTimeDuration` VARCHAR(45) NOT NULL,
+  `availableTime` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`calendarId`),
   INDEX `fk_calendar_users1_idx` (`sid` ASC) VISIBLE,
   CONSTRAINT `fk_calendar_users`
@@ -89,7 +88,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `peerhelping`.`matches`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `peerhelping`.`matches` (
-  `matchID` INT NOT NULL,
+  `matchId` INT NOT NULL,
   `studentSid` INT NOT NULL,
   `tutorSid` INT NOT NULL,
   `courseId` INT NOT NULL,
