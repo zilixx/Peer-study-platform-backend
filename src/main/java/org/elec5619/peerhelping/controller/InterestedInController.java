@@ -19,8 +19,9 @@ public class InterestedInController {
     @Autowired
     InterestedInService interestedInService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UploadController.class);
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(InterestedInController.class);
+    private int cid;
+    private String availableTime = "";
     @GetMapping("/getinterest")
     @ResponseBody
     public InterestedinEntity getInterestBySid(@RequestParam(value = "sid") String sid){
@@ -36,15 +37,17 @@ public class InterestedInController {
     @GetMapping("/select")
     @ResponseBody
     public String selectCourse(@RequestParam(value="courseId") String cid) {
-        System.out.println(cid);
-        return "select course " + cid;
+        this.cid = Integer.parseInt(cid);
+        System.out.println(this.cid);
+        return "select course " + this.cid;
     }
 
     @GetMapping("/selectDay")
     @ResponseBody
     public String selectDay(@RequestParam(value="day") String day) {
-        System.out.println(day);
-        return "select course " + day;
+        this.availableTime = day;
+        System.out.println(availableTime);
+        return "select course " + availableTime;
     }
 
     @GetMapping("/upload")
@@ -62,6 +65,9 @@ public class InterestedInController {
         String fileName = file.getOriginalFilename();
         String filePath = new File("src\\main\\resources\\files").getAbsolutePath() + "\\";
         File dest = new File(filePath + fileName);
+        var status1 = this.interestedInService.addInterestedIn(1001, this.cid);
+        var status2 = this.interestedInService.addCalendar(1001, this.availableTime);
+        var status = status1 && status2;
         try {
             file.transferTo(dest);
             LOGGER.info("上传成功");
@@ -69,7 +75,7 @@ public class InterestedInController {
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
         }
-        return "上传失败！";
+        return "{\"addStat\": " + status + "}";
     }
     // TODO: to be updated
 }

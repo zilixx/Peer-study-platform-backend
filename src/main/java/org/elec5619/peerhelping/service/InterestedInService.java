@@ -27,4 +27,16 @@ public class InterestedInService {
     public List<CoursesEntity> findAllCourses() {
         return this.coursesDao.findAllCourse();
     }
+
+    public boolean addInterestedIn(int sid, int courseId) {
+        int currentLargestInterestId = this.interestedInDao.findTopInterestedId();
+        this.interestedInDao.addNewInterestedIn(sid, courseId, currentLargestInterestId+1);
+        return this.interestedInDao.findTopInterestedId() == currentLargestInterestId + 1;
+    }
+
+    public boolean addCalendar(int sid, String availableTime) {
+        int currentLargestCalendarId = this.interestedInDao.findTopCalendarId();
+        this.interestedInDao.addNewCalendarRow(sid, currentLargestCalendarId+1, availableTime);
+        return this.interestedInDao.findTopCalendarId() == currentLargestCalendarId + 1;
+    }
 }
