@@ -59,7 +59,7 @@ public class InterestedInController {
     @ResponseBody
     public String upload(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
-            return "上传失败，请选择文件";
+            return "Upload failed!";
         }
 
         String fileName = file.getOriginalFilename();
@@ -70,8 +70,8 @@ public class InterestedInController {
         var status = status1 && status2;
         try {
             file.transferTo(dest);
-            LOGGER.info("上传成功");
-            return "上传成功";
+            LOGGER.info("Upload successfully!");
+            return "Upload successfully!";
         } catch (IOException e) {
             LOGGER.error(e.toString(), e);
         }
