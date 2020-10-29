@@ -40,8 +40,4 @@ public interface InterestedInDao extends CrudRepository<InterestedinEntity, Long
 
     @Query(value = "select calendarId from calendar order by calendarId desc limit 1", nativeQuery = true)
     int findTopCalendarId();
-    // TODO: to be updated
-
-
-
 }

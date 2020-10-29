@@ -45,7 +45,7 @@ public class CoursesController {
     @GetMapping("/booked/{courseCode}")
     @ResponseBody
     public List<Map<String, Object>> getBookedTutorList(@PathVariable("courseCode") String courseCode, @RequestParam("sid") String sid) {
-        return this.coursesService.getBookedTutorList(Integer.parseInt(sid), courseCode); // TODO: not fully tested
+        return this.coursesService.getBookedTutorList(Integer.parseInt(sid), courseCode);
     }
 
 }

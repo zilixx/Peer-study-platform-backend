@@ -21,7 +21,7 @@ public class InterestedInService {
     }
 
     public List<CoursesEntity> findAllCourses() {
-        return this.coursesDao.findAllCourse();
+        return this.coursesDao.getAllDistinctCourses();
     }
 
     public boolean addInterestedIn(int sid, int courseId) {

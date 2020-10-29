@@ -22,11 +22,7 @@ public class InterestedInController {
     private static final Logger LOGGER = LoggerFactory.getLogger(InterestedInController.class);
     private int cid;
     private String availableTime = "";
-    @GetMapping("/getinterest")
-    @ResponseBody
-    public InterestedinEntity getInterestBySid(@RequestParam(value = "sid") String sid){
-        return this.interestedInService.findInterestBySid(Integer.parseInt(sid));
-    }
+
 
     @GetMapping("/all")
     @ResponseBody
@@ -77,5 +73,4 @@ public class InterestedInController {
         }
         return "{\"addStat\": " + status + "}";
     }
-    // TODO: to be updated
 }
