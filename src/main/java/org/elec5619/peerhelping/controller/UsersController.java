@@ -36,8 +36,10 @@ public class UsersController {
         if (user != null) {
             Cookie id = new Cookie("sid", sid);
             Cookie username = new Cookie("username", user.getFirstName());
+            Cookie isLogin = new Cookie("isLogin", "true");
             response.addCookie(id);
             response.addCookie(username);
+            response.addCookie(isLogin);
             return new ModelAndView(new RedirectView("http://localhost:8080"));
         } else {
             // if user does not exist, then redirect to login page and show message
