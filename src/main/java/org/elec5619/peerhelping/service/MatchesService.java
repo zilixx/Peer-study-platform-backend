@@ -3,6 +3,7 @@ package org.elec5619.peerhelping.service;
 import org.elec5619.peerhelping.dao.CalendarDao;
 import org.elec5619.peerhelping.dao.CoursesDao;
 import org.elec5619.peerhelping.dao.MatchesDao;
+import org.elec5619.peerhelping.dao.UsersDao;
 import org.elec5619.peerhelping.domain.MatchesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ public class MatchesService {
 
     @Autowired
     CalendarDao calendarDao;
+
+    @Autowired
+    UsersDao usersDao;
 
     public List<Map<String, Object>> findAllBookings(int sid) {
         return this.matchesDao.findByStudentId(sid);
@@ -50,5 +54,14 @@ public class MatchesService {
 
         // Look up the new matching record to make sure it inserts successfully
         return this.matchesDao.findTopMatchId() == currentLargestMatchId + 1;
+    }
+
+    /**
+     * Find all the students that have booked study help with target tutor
+     * @param tutorId target tutor sid
+     * @return JSON list object, including student sid, student full name and student`s booked courseCode
+     */
+    public List<Map<String, Object>> findAllStudentByTutorSid(int tutorId) {
+        return this.usersDao.findAllStudentByTutorSid(tutorId);
     }
 }
