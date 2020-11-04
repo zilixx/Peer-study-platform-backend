@@ -65,4 +65,10 @@ public class MatchesController {
         var status = this.matchesService.addBooking(Integer.parseInt(studentId), Integer.parseInt(tutorId), courseCode);
         return "{\"addStat\": " + status + "}";
     }
+
+    @GetMapping("/tutor")
+    @ResponseBody
+    public List<Map<String, Object>> getStudentsOfTutor(@RequestParam("tutorId") String tutorId) {
+        return this.matchesService.findAllStudentByTutorSid(Integer.parseInt(tutorId));
+    }
 }
