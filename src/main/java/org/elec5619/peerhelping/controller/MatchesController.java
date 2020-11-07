@@ -66,9 +66,11 @@ public class MatchesController {
         return "{\"addStat\": " + status + "}";
     }
 
-    @GetMapping("/tutor")
+    // MODIFIED
+    @GetMapping("/tutor/{courseCode}")
     @ResponseBody
-    public List<Map<String, Object>> getStudentsOfTutor(@RequestParam("tutorId") String tutorId) {
-        return this.matchesService.findAllStudentByTutorSid(Integer.parseInt(tutorId));
+    public List<Map<String, Object>> getStudentsOfTutor(@PathVariable(value = "courseCode") String courseCode,
+                                                        @RequestParam("tutorId") String tutorId) {
+        return this.matchesService.findAllStudentByTutorSid(courseCode ,Integer.parseInt(tutorId));
     }
 }
