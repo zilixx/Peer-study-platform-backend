@@ -1,5 +1,6 @@
 package org.elec5619.peerhelping.service;
 
+import org.elec5619.peerhelping.dao.CalendarDao;
 import org.elec5619.peerhelping.dao.CoursesDao;
 import org.elec5619.peerhelping.dao.InterestedInDao;
 import org.elec5619.peerhelping.domain.CoursesEntity;
@@ -13,6 +14,10 @@ import java.util.List;
 public class InterestedInService {
     @Autowired
     InterestedInDao interestedInDao;
+
+    @Autowired
+    CalendarDao calendarDao;
+
     @Autowired
     CoursesDao coursesDao;
 
@@ -31,8 +36,8 @@ public class InterestedInService {
     }
 
     public boolean addCalendar(int sid, String availableTime) {
-        int currentLargestCalendarId = this.interestedInDao.findTopCalendarId();
-        this.interestedInDao.addNewCalendarRow(sid, currentLargestCalendarId+1, availableTime);
-        return this.interestedInDao.findTopCalendarId() == currentLargestCalendarId + 1;
+        int currentLargestCalendarId = this.calendarDao.findTopCalendarId();
+        this.calendarDao.addNewCalendarRow(sid, currentLargestCalendarId+1, availableTime);
+        return this.calendarDao.findTopCalendarId() == currentLargestCalendarId + 1;
     }
 }

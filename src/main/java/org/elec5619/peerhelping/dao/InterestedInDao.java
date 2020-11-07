@@ -27,17 +27,6 @@ public interface InterestedInDao extends CrudRepository<InterestedinEntity, Long
                             @Param("courseId") int courseId,
                             @Param("interestId") int interestId);
 
-    @Modifying
-    @Transactional
-    @Query(value = "insert into calendar (sid, calendarId, availableTime) " +
-            "value (:sid, :calendarId, :availableTime)", nativeQuery = true)
-    void addNewCalendarRow(@Param("sid") int sid,
-                            @Param("calendarId") int calendarId,
-                            @Param("availableTime") String availableTime);
-
     @Query(value = "select interestId from interestedin order by interestId desc limit 1", nativeQuery = true)
     int findTopInterestedId();
-
-    @Query(value = "select calendarId from calendar order by calendarId desc limit 1", nativeQuery = true)
-    int findTopCalendarId();
 }

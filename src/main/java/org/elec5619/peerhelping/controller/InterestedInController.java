@@ -6,10 +6,12 @@ import org.elec5619.peerhelping.service.InterestedInService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,58 +21,43 @@ public class InterestedInController {
     @Autowired
     InterestedInService interestedInService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InterestedInController.class);
-    private int cid;
-    private String availableTime = "";
-
-
     @GetMapping("/all")
     @ResponseBody
     public List<CoursesEntity> getAllCourse() {
         return this.interestedInService.findAllCourses();
     }
 
-    @GetMapping("/select")
-    @ResponseBody
-    public String selectCourse(@RequestParam(value="courseId") String cid) {
-        this.cid = Integer.parseInt(cid);
-        System.out.println(this.cid);
-        return "select course " + this.cid;
-    }
-
-    @GetMapping("/selectDay")
-    @ResponseBody
-    public String selectDay(@RequestParam(value="day") String day) {
-        this.availableTime = day;
-        System.out.println(availableTime);
-        return "select course " + availableTime;
-    }
-
-    @GetMapping("/upload")
-    public String upload() {
-        return "upload";
-    }
-
     @PostMapping("/upload")
     @ResponseBody
-    public String upload(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return "Upload failed!";
+    public String upload(@RequestParam("file") MultipartFile file,
+                         @RequestParam("sid") String sid,
+                         @RequestParam("time") String time,
+                         @RequestParam("courseId") String courseId) throws FileNotFoundException {
+        String fileName = file.getOriginalFilename();
+        String filePath = new File("src\\main\\resources\\static\\upload").getAbsolutePath() + "\\";
+
+        // Create local file if not exists
+        boolean status = false;
+        var localFile = new File(filePath + fileName);
+        if(!localFile.exists()) {
+            try {
+                status = localFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        String fileName = file.getOriginalFilename();
-        String filePath = new File("src\\main\\resources\\files").getAbsolutePath() + "\\";
-        File dest = new File(filePath + fileName);
-        var status1 = this.interestedInService.addInterestedIn(1001, this.cid);
-        var status2 = this.interestedInService.addCalendar(1001, this.availableTime);
-        var status = status1 && status2;
+        // Write into local file.
         try {
-            file.transferTo(dest);
-            LOGGER.info("Upload successfully!");
-            return "Upload successfully!";
+            file.transferTo(localFile);
         } catch (IOException e) {
-            LOGGER.error(e.toString(), e);
+            e.printStackTrace();
         }
-        return "{\"addStat\": " + status + "}";
+
+        // Insert into database
+        var iStat =  this.interestedInService.addInterestedIn(Integer.parseInt(sid), Integer.parseInt(courseId));
+        var cStat = this.interestedInService.addCalendar(Integer.parseInt(sid), time);
+
+        return "{\"fileStat\": " + status + ", \"insertStat\": " + (iStat & cStat) + "}";
     }
 }
