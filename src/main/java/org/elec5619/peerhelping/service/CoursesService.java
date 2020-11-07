@@ -25,4 +25,12 @@ public class CoursesService {
     public List<Map<String, Object>> getBookedTutorList(int sid, String courseCode) {
         return this.coursesDao.getBookedTutor(sid, courseCode);
     }
+
+    public List<Map<String, Object>> getStudentBookedCourse(int sid) {
+        return this.coursesDao.findStudentBookedCourse(sid);
+    }
+
+    public List<Map<String, Object>> getTutorBookedCourse(int tutorId) {
+        return this.coursesDao.findTutorBookedCourse(tutorId);
+    }
 }

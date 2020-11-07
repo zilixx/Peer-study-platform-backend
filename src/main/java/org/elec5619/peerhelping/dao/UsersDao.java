@@ -19,13 +19,14 @@ public interface UsersDao extends CrudRepository<UsersEntity, Long> {
 
     UsersEntity findBySidAndPassword(int sid, String pwd);
 
+    // MODIFIED
     /**
      * Find the tutor's current students
      * @param tutorId the tutor sid
      * @return JSON list object
      */
-    @Query(value = "select u.sid, u.first_name, u.last_name, m.matchTime, c.courseCode " +
+    @Query(value = "select u.sid, u.first_name, u.last_name, m.matchTime, c.name " +
             "from users u, matches m, courses c " +
-            "where m.tutorSid=:tutorId and u.sid = m.studentSid and m.courseId = c.courseId", nativeQuery = true)
-    List<Map<String, Object>> findAllStudentByTutorSid(@Param(value = "tutorId") int tutorId);
+            "where m.tutorSid=:tutorId and u.sid = m.studentSid and m.courseId = c.courseId and c.courseCode=:courseCode", nativeQuery = true)
+    List<Map<String, Object>> findAllStudentByTutorSid(@Param("courseCode") String courseCode, @Param(value = "tutorId") int tutorId);
 }

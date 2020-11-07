@@ -36,6 +36,7 @@
                     </span>
             </div>
             <span style="color: red">${errMessage}</span>
+            <span style="color: lightseagreen">${successMessage}</span>
             <div class="row">
                 <div class="input-field col s12">
                     <input id="sid" name="sid" type="text" class="validate" required />
@@ -47,14 +48,6 @@
                     <input id="password" name="password" minlength="6" type="password" class="validate" required />
                     <label for="password">Password</label>
                     <span class="helper-text" data-error="6 characters minimum"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6">
-                    <label>
-                        <input type="checkbox" id="remember" />
-                        <span class="teal-text">Remember me?</span>
-                    </label>
                 </div>
             </div>
             <div class="row">
@@ -85,15 +78,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
-                    <input id="re_email" name="re_email" type="email" class="validate" required />
-                    <label for="re_email">Email</label>
+                <div class="input-field col s6">
+                    <input id="first_name" name="first_name" type="text" class="validate" required />
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" name="last_name" type="text" class="validate" required />
+                    <label for="last_name">Last Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="re_username" name="re_username" type="text" class="validate" required />
-                    <label for="re_username">Username</label>
+                    <select id="gender" name="gender">
+                        <option value="secret">secret</option>
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                    </select>
+                    <label>Gender</label>
                 </div>
             </div>
             <div class="row">

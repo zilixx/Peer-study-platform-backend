@@ -48,4 +48,26 @@ public class CoursesController {
         return this.coursesService.getBookedTutorList(Integer.parseInt(sid), courseCode);
     }
 
+    /**
+     * Get courses that a student have booked
+     * @param sid student id
+     * @return JSON list
+     */
+    @GetMapping("student/booked")
+    @ResponseBody
+    public List<Map<String, Object>> getStudentBookedCourse(@RequestParam("sid") String sid) {
+        return this.coursesService.getStudentBookedCourse(Integer.parseInt(sid));
+    }
+
+    /**
+     * Get courses that a tutor is responsible for
+     * @param tutorId tutor id
+     * @return JSON list
+     */
+    @GetMapping("tutor/booked")
+    @ResponseBody
+    public List<Map<String, Object>> getTutorBookedCourse(@RequestParam("tutorId") String tutorId) {
+        return this.coursesService.getTutorBookedCourse(Integer.parseInt(tutorId));
+    }
+
 }

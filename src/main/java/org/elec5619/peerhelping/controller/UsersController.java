@@ -42,37 +42,39 @@ public class UsersController {
             response.addCookie(isLogin);
             return new ModelAndView(new RedirectView("http://localhost:8080"));
         } else {
-            // if user does not exist, then redirect to login page and show message
-            session.setAttribute("errMessage", "user does not exist");
-            // set session time
+            session.setAttribute("errMessage", "login fail, please check your username and password");
             session.setMaxInactiveInterval(5);
             return new ModelAndView(new RedirectView("/"));
         }
     }
 
-    @ResponseBody
-    @GetMapping("doRegister")
-    public String doRegister(
+    @PostMapping("doRegister")
+    public ModelAndView doRegister(
             @RequestParam("re_sid") String sid,
-            @RequestParam("re_email") String email,
+            @RequestParam("gender") String gender,
             @RequestParam("re_password") String password,
-            @RequestParam("re_username") String username
+            @RequestParam("first_name") String firstname,
+            @RequestParam("last_name") String lastname,
+            HttpSession session
     ) {
         UsersEntity user = new UsersEntity();
+        System.out.println(gender);
         if (usersService.findBySid(Integer.parseInt(sid)) != null) {
-            // TODO: return duplicate user message
+            session.setAttribute("errMessage", "register fail, since user already exist");
+            session.setMaxInactiveInterval(5);
         } else {
-//            user.setSid();
-//            user.setPassword();
-//            user.setGender();
-//            user.setFirstName();
-//            user.setLastName();
+            gender = (gender.equals("secret"))?null:gender;
+            user.setSid(Integer.parseInt(sid));
+            user.setPassword(password);
+            user.setGender(gender);
+            user.setFirstName(firstname);
+            user.setLastName(lastname);
 
             // save user
             usersService.save(user);
-
-            // TODO: return success message
+            session.setAttribute("successMessage", "register success, you can login with your account");
+            session.setMaxInactiveInterval(5);
         }
-        return "main";
+        return new ModelAndView(new RedirectView("/"));
     }
 }

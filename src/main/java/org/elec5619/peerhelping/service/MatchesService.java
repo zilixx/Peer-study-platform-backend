@@ -56,12 +56,13 @@ public class MatchesService {
         return this.matchesDao.findTopMatchId() == currentLargestMatchId + 1;
     }
 
+    // MODIFIED
     /**
      * Find all the students that have booked study help with target tutor
      * @param tutorId target tutor sid
      * @return JSON list object, including student sid, student full name and student`s booked courseCode
      */
-    public List<Map<String, Object>> findAllStudentByTutorSid(int tutorId) {
-        return this.usersDao.findAllStudentByTutorSid(tutorId);
+    public List<Map<String, Object>> findAllStudentByTutorSid(String courseCode, int tutorId) {
+        return this.usersDao.findAllStudentByTutorSid(courseCode, tutorId);
     }
 }

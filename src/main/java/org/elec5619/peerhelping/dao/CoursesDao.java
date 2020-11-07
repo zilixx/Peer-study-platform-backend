@@ -34,15 +34,25 @@ public interface CoursesDao extends CrudRepository<CoursesEntity, Long> {
             nativeQuery = true)
     List<Map<String, Object>> getTutorInfoByCourse(@Param(value = "courseCode") String courseCode);
 
+    // MODIFIED
     /**
      * Get tutors that already have bookings in target course and target student
      * @param sid current student sid
      * @param courseCode current courseCode
      * @return JSON list object
      */
-    @Query(value = "select m.tutorSid, m.matchTime " +
-            "from matches m, courses c " +
-            "where c.courseCode = :courseCode and m.studentSid = :sid and c.courseId = m.courseId", nativeQuery = true)
+    @Query(value = "select m.tutorSid, m.matchTime, u.first_name, u.last_name, c.name " +
+            "from matches m, courses c, users u " +
+            "where c.courseCode = :courseCode and m.studentSid = :sid and c.courseId = m.courseId and m.tutorSid = u.sid", nativeQuery = true)
     List<Map<String, Object>> getBookedTutor(@Param("sid") int sid, @Param("courseCode") String courseCode);
 
+    @Query(value = "select distinct c.courseId, c.name, c.description, c.courseCode " +
+            "from matches m, courses c " +
+            "where m.studentSid = :sid and m.courseId=c.courseId",nativeQuery = true)
+    List<Map<String, Object>> findStudentBookedCourse(@Param("sid") int sid);
+
+    @Query(value = "select distinct c.courseId, c.name, c.description, c.courseCode " +
+            "from matches m, courses c " +
+            "where m.tutorSid = :tutorId and m.courseId=c.courseId", nativeQuery = true)
+    List<Map<String, Object>> findTutorBookedCourse(@Param("tutorId") int tutorId);
 }
