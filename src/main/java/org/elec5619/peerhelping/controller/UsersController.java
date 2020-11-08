@@ -35,7 +35,7 @@ public class UsersController {
 
         if (user != null) {
             Cookie id = new Cookie("sid", sid);
-            Cookie username = new Cookie("username", user.getFirstName());
+            Cookie username = new Cookie("username", user.getFirstName().strip());
             Cookie isLogin = new Cookie("isLogin", "true");
             response.addCookie(id);
             response.addCookie(username);
