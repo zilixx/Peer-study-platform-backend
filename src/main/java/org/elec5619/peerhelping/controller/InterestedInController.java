@@ -32,16 +32,19 @@ public class InterestedInController {
     public String upload(@RequestParam("file") MultipartFile file,
                          @RequestParam("sid") String sid,
                          @RequestParam("time") String time,
-                         @RequestParam("courseId") String courseId) throws FileNotFoundException {
+                         @RequestParam("courseId") String courseId) {
         String fileName = file.getOriginalFilename();
-        String filePath = new File("src\\main\\resources\\static\\upload").getAbsolutePath() + "\\";
+        String filePath = new File("src\\main\\resources\\static\\").getAbsolutePath() + "\\upload\\";
 
         // Create local file if not exists
-        boolean status = false;
+        boolean status;
         var localFile = new File(filePath + fileName);
         if(!localFile.exists()) {
             try {
-                status = localFile.createNewFile();
+                if (localFile.mkdirs()){
+                    status = localFile.createNewFile();
+                    System.out.println("File created: " + localFile.getPath());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,6 +60,8 @@ public class InterestedInController {
         // Insert into database
         var iStat =  this.interestedInService.addInterestedIn(Integer.parseInt(sid), Integer.parseInt(courseId));
         var cStat = this.interestedInService.addCalendar(Integer.parseInt(sid), time);
+
+        status = localFile.exists();
 
         return "{\"fileStat\": " + status + ", \"insertStat\": " + (iStat & cStat) + "}";
     }
