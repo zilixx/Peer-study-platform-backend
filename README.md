@@ -1,11 +1,14 @@
 # Peer_Study_Helping_Backend
 This is the working repository for group project Peer Study Helping platform.
 
-The `master` branch is for completed code merged from other feature branch. Do not push directly into `master`.
+## Members:
+- [Chenghao Li](https://github.com/1lch2)
+- [Zidong Li](https://github.com/Lee970623)
+- Limou Zhou
+- Qihang Zhao
+- Shihanjian Wang
 
-One branch for each group member with their unique tasks.
 
-**This is the backend project repository, if you are looking for the front project, checkout [this link](https://github.sydney.edu.au/ELEC5619-2020/Peer_Study_Helping_Frontend).**
 ## Project setup
 ### Dependencies that need to be installed manually
 - Java: Open JDK 11
